@@ -24,9 +24,9 @@
     "tags": {
       "type": "json"
     },
-    "events": {
+    "eventID": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::event.event",
       "inversedBy": "resources"
     },

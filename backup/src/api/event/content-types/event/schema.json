@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "events"
+    },
+    "title": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "start_datetime": {
+      "type": "string"
+    },
+    "event_duration": {
+      "type": "integer"
+    },
+    "end_date_time": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "json"
+    },
+    "resources": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource",
+      "mappedBy": "events"
+    }
+  }
+}

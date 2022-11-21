@@ -63,11 +63,23 @@
       "inversedBy": "users",
       "configurable": false
     },
+    "event_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-category.event-category",
+      "mappedBy": "categoryId"
+    },
+    "tests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::test.test",
+      "mappedBy": "author"
+    },
     "events": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::event.event",
-      "inversedBy": "users"
+      "mappedBy": "user"
     }
   }
 }

@@ -5,5 +5,16 @@
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
+module.exports = createCoreController('api::event.event', {
+    async find(ctx){
+        const user = ctx.state.user;
+        ctx.query.filters = {
+            ...(ctx.query.filters || {}),
+            user: user.id
 
-module.exports = createCoreController('api::event.event');
+        };
+    
+        return super.find(ctx);
+    }
+
+});

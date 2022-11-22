@@ -1,45 +1,42 @@
 module.exports = {
   async index(ctx, next) {
-    const { pid,sid } = ctx.params;
-    console.log("param_id", pid);
-    console.log("ss_id",sid);
+  },
+
+  //udpate participants status 
+  async updateparticipant(ctx, next){
+    const { id,cid } = ctx.params;
+
+    //get participant for update
     const entries = await strapi.db.query('api::event.event').findMany({
       fields: ['id', 'notes', 'participants'],
       select: ['id', 'notes', 'participants'],
-      // if(participants) {
-      //   const { id } = participants;
-      //   console.log("id", id);
-      // },
       populate: { category: true },
-      where: { id: pid },
+      where: { id: id },
     });
     ctx.body = entries;
-    console.log("entries",entries[0].participants[0].id);
-    // console.log("entries",entries[0].participants);
+    
 
+    //Array for participants
     const uncofirm_array = [];
+    
+    //Get participant 
     const uncofirm = entries[0].participants;
 
-    const testobj = Object.values(uncofirm);
+    //conver array elements to object 
+    const convertToObject = Object.values(uncofirm);
   
-    // This is filter 1 for update the particpant status
-    if(sid){
-    var filter1 = testobj.filter(function (value, index, arr) {
-      return value.id == sid;
+    // filter requested participant 
+    if(cid){
+    var filter1 = convertToObject.filter(function (value, index, arr) {
+      return value.id == cid;
     });
-    console.log("filter1", filter1);
-  }
+    }
 
+    //new obj for requested participant 
     let filter1_obj_for_udpate = {
       "id": '',
       "attributes": {
         "name": "",
-        "tags": [
-          {
-            "id": 1,
-            "title": ""
-          }
-        ],
         "email": "",
         "status": false,
         "contact": "",
@@ -50,40 +47,43 @@ module.exports = {
 
     }
  
-    console.log("Attribute", filter1[0].attributes.name);
-    // Udpate Filter 1
+
+    // Udpate status of  filter1_obj_for_udpate
     if (filter1) {
         filter1_obj_for_udpate["id"] = filter1[0].id,
         filter1_obj_for_udpate["attributes"]["name"] = filter1[0].attributes.name,
-        filter1_obj_for_udpate["attributes"]["tags"] = filter1[0].attributes.tags,
         filter1_obj_for_udpate["attributes"]["email"] = filter1[0].attributes.email,
-        filter1_obj_for_udpate["attributes"]["status"] = "truebyme",
+        filter1_obj_for_udpate["attributes"]["status"] = true,
         filter1_obj_for_udpate["attributes"]["contact"] = filter1[0].attributes.contact,
         filter1_obj_for_udpate["attributes"]["createdAt"] = filter1[0].attributes.createdAt,
         filter1_obj_for_udpate["attributes"]["updatedAt"] = filter1[0].attributes.updatedAt,
         filter1_obj_for_udpate["attributes"]["publishedAt"] = filter1[0].attributes.publishedAt
     }
 
-    var filter2 = testobj.filter(function (value, index, arr) {
-      return value.id !== 5;
+
+    //get rest of the participants from participants array
+    if(cid){
+    var filter2 = convertToObject.filter(function (value, index, arr) {
+      return value.id != cid;
     });
-    // console.log("filter2", filter2);
+   
 
-
-    //Combine filter1 and rest of the filters
+    //Array for combine all participants
     let ConfirmParticapantsArray = [];
-
     ConfirmParticapantsArray.push(filter1_obj_for_udpate);
- 
- 
 
+    //get rest of participants from array
     for (const i in filter2) {    
         ConfirmParticapantsArray.push(filter2[i]); 
     }
 
-    console.log("ConfirmFilters",ConfirmParticapantsArray);
-    
 
-    
+    const entry = await strapi.db.query('api::event.event').update({
+      where: { id: id },
+      data: {
+        participants:ConfirmParticapantsArray
+      },
+    });
+  } 
   }
 };

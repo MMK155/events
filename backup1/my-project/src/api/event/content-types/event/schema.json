@@ -21,6 +21,9 @@
     "title": {
       "type": "string"
     },
+    "tags": {
+      "type": "json"
+    },
     "start_datetime": {
       "type": "string"
     },

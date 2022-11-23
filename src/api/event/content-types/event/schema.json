@@ -41,6 +41,9 @@
       "relation": "oneToMany",
       "target": "api::resource.resource",
       "mappedBy": "eventID"
+    },
+    "testbug": {
+      "type": "string"
     }
   }
 }

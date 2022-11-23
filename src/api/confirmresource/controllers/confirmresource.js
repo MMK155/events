@@ -1,6 +1,40 @@
 module.exports = {
   async index(ctx, next) {
+    const { pid, } = ctx.params;
+    console.log("param_id", pid);
+    
+    const entries = await strapi.db.query('api::event.event').findMany({
+      fields: ['id', 'notes', 'participants'],
+      select: ['id', 'notes', 'participants'],
+
+      populate: { category: true },
+      where: { id: pid },
+    });
+    // ctx.body = entries;
+
+    //get objects participants from a entries array  
+    const getobjects = entries[0].participants;
+    const ExtractObjectFromArray = Object.values(getobjects);
+
+
+    //get participants object from ExtractObjectFromArray
+    if(pid){
+      var filter1 = ExtractObjectFromArray.filter(function (value, index, arr) {
+        return value.attributes;
+      });
+      }
+
+     //get status true participants 
+      var ExtractStatusTrueObject = ExtractObjectFromArray.filter(function (value, index, arr) {
+        return value.attributes.status == true;
+      });
+  
+      //return status true participants 
+      if(ExtractStatusTrueObject){
+          return ExtractStatusTrueObject;
+      }
   },
+
 
   //udpate participants status 
   async updateparticipant(ctx, next){
@@ -10,20 +44,19 @@ module.exports = {
     const entries = await strapi.db.query('api::event.event').findMany({
       fields: ['id', 'notes', 'participants'],
       select: ['id', 'notes', 'participants'],
-      populate: { category: true },
       where: { id: id },
     });
     ctx.body = entries;
-    
+   
 
     //Array for participants
-    const uncofirm_array = [];
+    const unconfirm_array = [];
     
     //Get participant 
-    const uncofirm = entries[0].participants;
+    const unconfirm = entries[0].participants;
 
     //conver array elements to object 
-    const convertToObject = Object.values(uncofirm);
+    const convertToObject = Object.values(unconfirm);
   
     // filter requested participant 
     if(cid){
@@ -77,7 +110,7 @@ module.exports = {
         ConfirmParticapantsArray.push(filter2[i]); 
     }
 
-
+    //update participants status
     const entry = await strapi.db.query('api::event.event').update({
       where: { id: id },
       data: {

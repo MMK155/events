@@ -80,6 +80,12 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "user"
+    },
+    "resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resource.resource",
+      "mappedBy": "user"
     }
   }
 }

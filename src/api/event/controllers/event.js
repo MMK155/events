@@ -11,7 +11,6 @@ module.exports = createCoreController('api::event.event', {
         ctx.query.filters = {
             ...(ctx.query.filters || {}),
             user: user.id
-
         };
     
         return super.find(ctx);

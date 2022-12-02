@@ -70,6 +70,12 @@ module.exports = {
       "id": '',
       "attributes": {
         "name": "",
+        "tags": [
+          {
+            "id": 1,
+            "title": "Tag1"
+          }
+        ],
         "email": "",
         "status": false,
         "attendance": false,
@@ -86,6 +92,7 @@ module.exports = {
     if (filter1) {
         filter1_obj_for_udpate["id"] = filter1[0].id,
         filter1_obj_for_udpate["attributes"]["name"] = filter1[0].attributes.name,
+        filter1_obj_for_udpate["attributes"]["tags"] = filter1[0].attributes.tags,
         filter1_obj_for_udpate["attributes"]["email"] = filter1[0].attributes.email,
         filter1_obj_for_udpate["attributes"]["status"] = filter1[0].attributes.status,
         filter1_obj_for_udpate["attributes"]["attendance"] = true,

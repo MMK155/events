@@ -39,6 +39,11 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "resources"
+    },
+    "attendance": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

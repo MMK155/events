@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testvideos",
+  "info": {
+    "singularName": "testvideo",
+    "pluralName": "testvideos",
+    "displayName": "testvideo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vieotest": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

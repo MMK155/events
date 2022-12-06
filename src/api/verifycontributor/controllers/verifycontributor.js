@@ -15,9 +15,7 @@ module.exports = {
       populate: { category: true },
     });
 
-    console.log("findContribtors",findContribtors);
 
-    
 
     const contributorArray = [];
     const filter_requsted_contributor = entity.filter(item => item.email === email);
@@ -29,7 +27,7 @@ module.exports = {
       filter_requsted_contributor.map((item) => {
         contributorArray.push(item.email)
       });
-
+    }  
       //push id
       if (filter_requsted_contributor) {
         filter_requsted_contributor.map((item) => {
@@ -44,13 +42,13 @@ module.exports = {
         });
       }
 
-
-
-      //check exist contributor 
-      const filter_exist_contributor = findContribtors.filter(item => item.email === email);
-      console.log("filter_exist_contributor",filter_exist_contributor);
+      //filter if contributor already exist        
+      const filter_exist_contributor = findContribtors.filter((item) =>{ 
+       return item.email === email
+      });
 
       //create requested contributor
+      if(filter_exist_contributor.length === 0 ){
       if (contributorArray.length > 0) {
         const createContributor = await strapi.db.query('api::contributor.contributor').create({
           data: {
@@ -61,8 +59,6 @@ module.exports = {
             publishedAt:new Date().toISOString()
           },
         });
-
-        console.log('createContributor',createContributor);
 
         ctx.send({
           message: 'contributor  created!',
@@ -75,9 +71,13 @@ module.exports = {
         },404);
       }
 
-    } else {
-      console.log("Error");
+    }else{ 
+        ctx.send({
+          message: `Contributor Already exist`
+        });
     }
+
+    
 
   }
 };

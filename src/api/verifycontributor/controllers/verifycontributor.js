@@ -47,9 +47,16 @@ module.exports = {
             username: contributorArray[2]
           },
         });
-        return createContributor;
+
+        ctx.send({
+          message: 'contributor  created!',
+          createContributor
+        }, 201);
+
       } else {
-        console.log("Contributor Doest Exist");
+        ctx.send({
+          message: 'contributor Not Found'
+        }, 400);
       }
 
     } else {

@@ -1,17 +1,21 @@
 module.exports = {
   async verify(ctx, next, plugin) {
-    const { data: { email } } = ctx.request.body;
-
+    const { data: { email,user } } = ctx.request.body;
+    console.log("user",user);
 
     //find all users
     const entity = await strapi.entityService.findMany(
       "plugin::users-permissions.user",
     );
 
-    //find all contributors
-    // const findContribtors = await strapi.entityService.findMany(
-    //   "plugin::users-permissions.user",
-    // );
+    // find all contributors
+    const findContribtors = await strapi.db.query('api::contributor.contributor').findMany({
+      fields: ['id', 'email'],
+      select: ['id', 'email'],
+      populate: { category: true },
+    });
+
+    console.log("findContribtors",findContribtors);
 
     
 
@@ -42,7 +46,9 @@ module.exports = {
 
 
 
-
+      //check exist contributor 
+      const filter_exist_contributor = findContribtors.filter(item => item.email === email);
+      console.log("filter_exist_contributor",filter_exist_contributor);
 
       //create requested contributor
       if (contributorArray.length > 0) {
@@ -50,9 +56,13 @@ module.exports = {
           data: {
             email: contributorArray[0],
             cid: contributorArray[1],
-            username: contributorArray[2]
+            username: contributorArray[2],
+            user:user,
+            publishedAt:new Date().toISOString()
           },
         });
+
+        console.log('createContributor',createContributor);
 
         ctx.send({
           message: 'contributor  created!',

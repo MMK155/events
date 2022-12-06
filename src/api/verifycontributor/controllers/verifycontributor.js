@@ -74,7 +74,7 @@ module.exports = {
     }else{ 
         ctx.send({
           message: `Contributor Already exist`
-        });
+        },400);
     }
 
     

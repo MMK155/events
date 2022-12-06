@@ -56,7 +56,7 @@ module.exports = {
       } else {
         ctx.send({
           message: 'contributor Not Found'
-        }, 400);
+        });
       }
 
     } else {

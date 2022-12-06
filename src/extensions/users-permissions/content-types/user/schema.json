@@ -86,6 +86,12 @@
       "relation": "oneToMany",
       "target": "api::resource.resource",
       "mappedBy": "user"
+    },
+    "contributors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::contributor.contributor",
+      "mappedBy": "user"
     }
   }
 }

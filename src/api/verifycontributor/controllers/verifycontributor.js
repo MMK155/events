@@ -8,6 +8,12 @@ module.exports = {
       "plugin::users-permissions.user",
     );
 
+    //find all contributors
+    const entity = await strapi.entityService.findMany(
+      "plugin::users-permissions.user",
+    );
+
+    
 
     const contributorArray = [];
     const filter_requsted_contributor = entity.filter(item => item.email === email);
@@ -55,7 +61,7 @@ module.exports = {
 
       } else {
         ctx.send({
-          message: 'contributor Not Found'
+          message: `User with given email doesn't Exist!`
         },404);
       }
 

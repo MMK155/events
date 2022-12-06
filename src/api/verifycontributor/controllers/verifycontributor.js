@@ -9,9 +9,9 @@ module.exports = {
     );
 
     //find all contributors
-    const entity = await strapi.entityService.findMany(
-      "plugin::users-permissions.user",
-    );
+    // const findContribtors = await strapi.entityService.findMany(
+    //   "plugin::users-permissions.user",
+    // );
 
     
 

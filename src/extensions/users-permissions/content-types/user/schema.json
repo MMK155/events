@@ -69,18 +69,6 @@
       "target": "api::event-category.event-category",
       "mappedBy": "categoryId"
     },
-    "tests": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::test.test",
-      "mappedBy": "author"
-    },
-    "events": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::event.event",
-      "mappedBy": "user"
-    },
     "resources": {
       "type": "relation",
       "relation": "oneToMany",
@@ -89,9 +77,15 @@
     },
     "contributors": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::contributor.contributor",
-      "mappedBy": "user"
+      "inversedBy": "users"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event.event",
+      "mappedBy": "users"
     }
   }
 }

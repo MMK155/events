@@ -86,6 +86,12 @@
       "relation": "manyToMany",
       "target": "api::event.event",
       "mappedBy": "users"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

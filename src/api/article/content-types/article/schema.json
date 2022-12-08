@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "media_type": {
+      "type": "enumeration",
+      "enum": [
+        "video",
+        "image",
+        "text"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

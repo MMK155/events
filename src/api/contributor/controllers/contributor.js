@@ -10,7 +10,7 @@ module.exports = createCoreController('api::contributor.contributor', {
         const user = ctx.state.user;
         ctx.query.filters = {
             ...(ctx.query.filters || {}),
-            user: user.id
+            users: user
         };
     
         return super.find(ctx);

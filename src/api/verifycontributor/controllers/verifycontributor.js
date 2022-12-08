@@ -55,7 +55,7 @@ module.exports = {
             email: contributorArray[0],
             cid: contributorArray[1],
             username: contributorArray[2],
-            user:user,
+            users:user,
             publishedAt:new Date().toISOString()
           },
         });

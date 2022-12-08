@@ -38,6 +38,7 @@ module.exports = {
        ...ExtractObjectFromArray
     ];    
   
+    console.log("difference",difference);
     //update particpants
     const entry = await strapi.db.query('api::event.event').update({
       where: { id: id },

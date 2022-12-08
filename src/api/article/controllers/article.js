@@ -5,7 +5,7 @@
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
-module.exports = createCoreController('api::article.article', {
+module.exports = createCoreController('api::article.article',{
     async find(ctx){
         const user = ctx.state.user;
         ctx.query.filters = {

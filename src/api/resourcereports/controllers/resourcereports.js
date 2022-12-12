@@ -46,8 +46,8 @@ module.exports = {
      //get user events events 
      if(userEventArray.length > 0){
         const getEvents = await strapi.db.query('api::event.event').findMany({
-          fields: ['id','participants','event_duration','end_date_time','title'],
-          select: ['id','participants','event_duration','end_date_time','title'],
+          fields: ['id','participants','event_duration','start_datetime','title'],
+          select: ['id','participants','event_duration','start_datetime','title'],
           where: { id:userEventArray },
           populate: { category: true } 
         });
@@ -63,12 +63,12 @@ module.exports = {
       const status=filtered[0].attributes.status;
       const attendance=filtered[0].attributes.attendance;
       attributesArray.push({
-          "id": item.id,
-          "status": status,
-          "attendance":attendance,
-          "title": item.title,
-          "event_duration": item.event_duration,
-          "end_date_time": item.end_date_time
+          id: item.id,
+          resource_status: status,
+          resource_attendance: attendance,
+          event_title: item.title,
+          event_duration: item.event_duration,
+          event_startTime: item.start_datetime,
       });
     });
  

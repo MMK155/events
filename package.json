@@ -15,8 +15,10 @@
     "@strapi/plugin-users-permissions": "4.5.0",
     "@strapi/strapi": "4.5.0",
     "better-sqlite3": "7.4.6",
+    "moment": "^2.29.4",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
+    "qs": "^6.11.0",
     "strapi-utils": "^3.6.10"
   },
   "author": {

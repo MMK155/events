@@ -5,11 +5,9 @@ Strapi comes with a full featured [Command Line Interface](https://docs.strapi.i
 ### `clone or download`
 
 $ git clone https:/https://github.com/MMK155/events
-$ yarn # or npm i
+
 ```
-npm run develop
-# or
-yarn develop
+$ yarn # or npm i
 ```
 
 ### `Usage (run fullstack app on your machine)`

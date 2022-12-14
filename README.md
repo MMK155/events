@@ -10,7 +10,7 @@ $ git clone https:/https://github.com/MMK155/events
 $ yarn # or npm i
 ```
 
-### `Usage (run fullstack app on your machine)`
+### `Usage`
 _______________________________________________________________________________________________________________________________________________________________________
 
 ### `Prerequisites`

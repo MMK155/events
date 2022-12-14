@@ -2,17 +2,17 @@
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
-### `develop`
+### `clone or download`
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
-
+$ git clone https:/https://github.com/MMK155/events
+$ yarn # or npm i
 ```
 npm run develop
 # or
 yarn develop
 ```
 
-### `start`
+### `Usage (run fullstack app on your machine)`
 
 Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
 

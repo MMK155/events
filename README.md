@@ -13,9 +13,9 @@ yarn develop
 ```
 
 ### `Usage (run fullstack app on your machine)`
+_______________________________________________________________________________________________________________________________________________________________________
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
-
+Prerequisites
 ```
 npm run start
 # or

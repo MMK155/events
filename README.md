@@ -15,9 +15,14 @@ ________________________________________________________________________________
 
 ### `Prerequisites`
 ```
-npm run start
-# or
-yarn start
+MongoDB
+Node ^16.0.0
+npm
+```
+
+### `Env`
+
+Add env in server
 ```
 
 ### `build`

@@ -20,10 +20,7 @@ Node ^16.0.0
 npm
 ```
 
-### `Env`
-```
-Add env in server
-```
+
 
 ### `build`
 
@@ -35,4 +32,8 @@ npm run build
 yarn build
 ```
 
-## ⚙️ Deployment
+### `start`
+```
+npm run start
+```
+

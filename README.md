@@ -1,8 +1,7 @@
 # 🚀 EMS
 ### `clone or download`
 
-$ git clone https://github.com/rizvanhaider/associated-terminals-be](https://github.com/MMK155/events
-
+$ git clone https://github.com/rizvanhaider/associated-terminals-be
 ```
 $ yarn # or npm i
 ```

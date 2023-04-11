@@ -1,8 +1,7 @@
-# 🚀 Associated Terminal Backend
-
+# 🚀 EMS
 ### `clone or download`
 
-$ git clone https://github.com/rizvanhaider/associated-terminals-be
+$ git clone https://github.com/rizvanhaider/associated-terminals-be](https://github.com/MMK155/events
 
 ```
 $ yarn # or npm i

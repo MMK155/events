@@ -1,4 +1,4 @@
-# 🚀 EMS
+# 🚀 Associated Terminal Backend
 
 ### `clone or download`
 
@@ -17,7 +17,6 @@ Postgres
 Node ^16.13.1
 npm 8.1.2
 ```
-
 
 
 ### `build`
